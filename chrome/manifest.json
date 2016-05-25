@@ -3,7 +3,9 @@
 	"name": "北京挂号助手",
 	"version": "1.0",
 
-	"description": "帮助您在北京挂号统一平台抢号",
+	"author": "溪流软件工作室",
+
+	"description": "帮助您在北京市预约挂号统一平台快速抢号",
 	"icons" : {
 		"48" : "icon.png"
 	},
