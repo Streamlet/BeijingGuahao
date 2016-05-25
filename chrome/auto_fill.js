@@ -20,10 +20,6 @@ $(function () {
 		}
 		// 报销类型
 		$('#Rese_db_dl_idselect>option[value=1]').attr('selected', 'selected');
-		// 手机号
-		if (info['mobile']) {
-			$('#Rese_db_dl_dxyzid').val(info['mobile']);
-		}
 
 		// 获取验证码
 		if (info['auto-send-sms']) {
