@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>选项</title>
+	<link href="options.css" rel="stylesheet" />
+	<script type="text/javascript" src="jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="options.js"></script>
+</head>
+<body>
+	<p>设置个人信息用于自动填写</p>
+	<p>姓名：<br /><input type="text" id="name"/></p>
+	<p>手机号：<br /><input type="text" id="mobile"/></p>
+	<p>医保卡号：<br /><input type="text" id="social-id"/></p>
+	<p>就诊卡号：<br /><input type="text" id="hospital-id"/></p>
+	<p><input type="checkbox" id="auto-send-sms"/><label for="auto-send-sms">自动点击“获取验证码”</label></p>
+	<p><button id="save">保存</button></p>
+	<p><button id="delete">删除本地数据</button></p>
+	<p>隐私声明：<br />您的个人信息会被保存到您的本地机器，同时会被 Chrome 同步机制同步到您的其他设备。您的个人信息不会用作挂号以外的用途，请您放心。信则用，不信请卸载。</p>
+</body>
+</html>

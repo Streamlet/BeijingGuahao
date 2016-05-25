@@ -1,0 +1,38 @@
+{
+	"manifest_version": 2,
+	"name": "北京挂号助手",
+	"version": "1.0",
+
+	"description": "帮助您在北京挂号统一平台抢号",
+	"icons" : {
+		"48" : "icon.png"
+	},
+
+	"options_page": "options.html",
+	"options_ui": {
+		"chrome_style": true,
+		"page": "options.html"
+	},
+
+	"content_scripts": [
+		{
+			"matches": ["http://www.bjguahao.gov.cn/dpt/appoint/*-*.htm"],
+			"js": ["jquery-1.11.3.js", "auto_refresh.js"]
+		},
+		{
+			"matches": ["http://www.bjguahao.gov.cn/order/confirm/*-*-*-*.htm"],
+			"js": ["jquery-1.11.3.js", "auto_fill.js"]
+		}
+	],
+
+	"browser_action": {
+		"default_icon": "icon-small.png",
+		"default_title" : "北京挂号助手",
+		"default_popup": "popup.html"
+	},
+
+	"permissions" : [
+		"storage",
+		"tabs"
+	]
+}
