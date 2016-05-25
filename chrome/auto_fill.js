@@ -3,7 +3,7 @@ $(function () {
 		var info = items['info'];
 		// 选择就诊人
 		$('input[name="hzr"]').attr('checked', false);
-		if (info['name'] && info['idcard']) {
+		if (info['name']) {
 			$('p:has(input[name="hzr"])').each(function (i, e) {
 				if ($(e).text().indexOf(info['name']) >= 0) {
 					$(e).children('input').click();
