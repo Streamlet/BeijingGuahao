@@ -15,7 +15,7 @@ $(function () {
 		} else {
 			cell.append($('<button>').attr('class', 'stop_refresh').text('停止刷新'));
 			setTimeout(function () {
-				window.location.reload();
+				window.location.reload(true);
 			}, 1000);
 			$('.stop_refresh').click(function () {
 				stop_refresh();
