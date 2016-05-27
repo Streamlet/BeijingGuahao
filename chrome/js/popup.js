@@ -45,7 +45,7 @@ $(function() {
 		});
 	};
 	chrome.storage.sync.get(['info', 'favorites'], function(items) {
-		init_info(items['info']);
+		init_info(items['info'] || {});
 		init_favorites(items['favorites']);
 	});
 
