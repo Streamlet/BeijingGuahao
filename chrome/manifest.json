@@ -1,34 +1,32 @@
 {
 	"manifest_version": 2,
 	"name": "北京挂号助手",
-	"version": "1.0",
+	"version": "1.1",
 
 	"author": "溪流软件工作室",
 
 	"description": "帮助您在北京市预约挂号统一平台快速抢号",
 	"icons" : {
-		"48" : "icon.png"
-	},
-
-	"options_page": "options.html",
-	"options_ui": {
-		"chrome_style": true,
-		"page": "options.html"
+		"48" : "images/icon.png"
 	},
 
 	"content_scripts": [
 		{
+			"matches": ["http://www.bjguahao.gov.cn/hp/appoint/*.htm"],
+			"js": ["js/lib/jquery-1.11.3.js", "js/common.js", "js/favorite_hospital.js"]
+		},
+		{
 			"matches": ["http://www.bjguahao.gov.cn/dpt/appoint/*-*.htm"],
-			"js": ["jquery-1.11.3.js", "auto_refresh.js"]
+			"js": ["js/lib/jquery-1.11.3.js", "js/common.js", "js/favorite_department.js", "js/auto_refresh.js"]
 		},
 		{
 			"matches": ["http://www.bjguahao.gov.cn/order/confirm/*-*-*-*.htm"],
-			"js": ["jquery-1.11.3.js", "auto_fill.js"]
+			"js": ["js/lib/jquery-1.11.3.js", "js/auto_fill.js"]
 		}
 	],
 
 	"browser_action": {
-		"default_icon": "icon-small.png",
+		"default_icon": "images/icon-small.png",
 		"default_title" : "北京挂号助手",
 		"default_popup": "popup.html"
 	},

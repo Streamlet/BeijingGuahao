@@ -2,11 +2,11 @@ $(function () {
 	chrome.storage.sync.get('info', function(items) {
 		var info = items['info'];
 		// 选择就诊人
-		$('input[name="hzr"]').attr('checked', false);
+		$('input[name=hzr]').attr('checked', false);
 		if (info['name']) {
-			$('p:has(input[name="hzr"])').each(function (i, e) {
+			$('p:has(input[name=hzr])').each(function (i, e) {
 				if ($(e).text().indexOf(info['name']) >= 0) {
-					$(e).children('input').click();
+					$(e).children('input').trigger('click');
 				}
 			});
 		}
@@ -23,7 +23,7 @@ $(function () {
 
 		// 获取验证码
 		if (info['auto-send-sms']) {
-			$('#btnSendCodeOrder').click();
+			$('#btnSendCodeOrder').trigger('click');
 		}
 	});
 });
