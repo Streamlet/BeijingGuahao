@@ -34,7 +34,9 @@ $(function() {
 		init_buttonset($('#favorites'));
 		$('.delete').click(function() {
 			var url = $(this).attr('data-url');
-			chrome.storage.sync.get('favorites', function(items) {
+			chrome.storage.sync.get({
+				'favorites': {}
+			}, function(items) {
 				delete items['favorites'][url];
 				chrome.storage.sync.set({
 					'favorites': items['favorites']
@@ -44,8 +46,11 @@ $(function() {
 			});
 		});
 	};
-	chrome.storage.sync.get(['info', 'favorites'], function(items) {
-		init_info(items['info'] || {});
+	chrome.storage.sync.get({
+		'info': {},
+		'favorites': {}
+	}, function(items) {
+		init_info(items['info']);
 		init_favorites(items['favorites']);
 	});
 

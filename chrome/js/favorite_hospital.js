@@ -1,7 +1,9 @@
 $(function() {
 	var title = $('.yygh_box_top_p strong').text();
 	var url = window.location.href;
-	chrome.storage.sync.get('favorites', function(items) {
+	chrome.storage.sync.get({
+		'favorites': {}
+	}, function(items) {
 		if (items['favorites'][url]) {
 			$('.yygh_box_top_p').append(
 				$('<span>').html('&nbsp;')

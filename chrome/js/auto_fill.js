@@ -1,5 +1,7 @@
 $(function () {
-	chrome.storage.sync.get('info', function(items) {
+	chrome.storage.sync.get({
+		'info': {}
+	}, function(items) {
 		var info = items['info'];
 		// 选择就诊人
 		$('input[name=hzr]').attr('checked', false);

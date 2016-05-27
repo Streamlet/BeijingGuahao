@@ -48,7 +48,9 @@ $(function () {
 		});
 	}
 
-	chrome.storage.sync.get('auto_refresh', function (items) {
+	chrome.storage.sync.get({
+		'auto_refresh': false
+	}, function (items) {
 		var refresh_id = items['auto_refresh'];
 		console.log(refresh_id);
 		if (refresh_id) {

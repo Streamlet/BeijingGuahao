@@ -27,7 +27,9 @@ var init_ui = function () {
 };
 
 var add_favorite = function (url, title) {
-	chrome.storage.sync.get('favorites', function(items) {
+	chrome.storage.sync.get({
+		'favorites': {}
+	}, function(items) {
 		if (!items['favorites']) {
 			items['favorites'] = {};
 		}
