@@ -16,7 +16,7 @@
 			"js": ["js/lib/jquery-1.11.3.js", "js/common.js", "js/favorite_hospital.js"]
 		},
 		{
-			"matches": ["http://www.bjguahao.gov.cn/dpt/appoint/*-*.htm"],
+			"matches": ["http://www.bjguahao.gov.cn/dpt/appoint/*-*.htm","http://www.bjguahao.gov.cn/dpt/appoint/*-*.htm?week=*"],
 			"js": ["js/lib/jquery-1.11.3.js", "js/common.js", "js/favorite_department.js", "js/auto_refresh.js"]
 		},
 		{

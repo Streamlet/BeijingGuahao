@@ -34,7 +34,7 @@ $(function () {
 		$('.auto_refresh').click(function (e) {
 			var login_link = $('.dbnav_context_right a:first-child');
 			if (login_link.length > 0) {
-				login_link.trigger('click');
+				alert('请先登录，以免刷到号后耽误填写速度。');
 			} else {
 				$('.auto_refresh').attr('disabled', 'disabled');
 				var refresh_id = $(this).attr('id');
