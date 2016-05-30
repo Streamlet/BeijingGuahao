@@ -7,7 +7,7 @@
 
 	"description": "帮助您在北京市预约挂号统一平台快速抢号",
 	"icons" : {
-		"16": "images/icon16.png",
+		"19": "images/icon19.png",
 		"48": "images/icon48.png",
 		"128": "images/icon128.png"
 	},
@@ -28,7 +28,7 @@
 	],
 
 	"browser_action": {
-		"default_icon": "images/icon48.png",
+		"default_icon": "images/icon19.png",
 		"default_title" : "北京挂号助手",
 		"default_popup": "popup.html"
 	},
