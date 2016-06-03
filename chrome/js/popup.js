@@ -80,7 +80,7 @@ $(function() {
 
 	window.onload = function () {
 		chrome.storage.sync.get({
-			'tab': '#favorites',
+			'tab': '#about',
 		}, function (items) {
 			$('div.tabs ul li a[href=' + items['tab'] +']').trigger('click');
 		})
