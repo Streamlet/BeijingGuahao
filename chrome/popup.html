@@ -17,33 +17,69 @@
 	<div class="tabs">
 		<ul>
 			<li><a href="#favorites">我的收藏</a></li>
-			<li><a href="#info"">个人信息</a></li>
+			<li><a href="#info"">挂号选项</a></li>
+			<li><a href="#about"">关于</a></li>
 		</ul>
 		<div id="favorites">
 		</div>
 		<div id="info">
-			<p>设置个人信息用于自动填写</p>
-			<p>
-				姓名：<br />
-				<input type="text" id="name"/>
-			</p>
-			<p>
-				医保卡号：<br />
-				<input type="text" id="social-id"/>
-			</p>
-			<p>
-				就诊卡号：<br />
-				<input type="text" id="hospital-id"/>
-			</p>
-			<p>
-				<input type="checkbox" id="auto-send-sms"/>
-				<label for="auto-send-sms">自动点击“获取验证码”</label>
-			</p>
+			<table>
+				<tr>
+					<td>医生类别：</td>
+					<td>
+						<input type="text" id="doctor-type" placeholder="如“普通号”、“主任医师”等"/>
+						<span class="desc">支持正则表达式</span>
+					</td>
+				</tr>
+				<tr>
+					<td>医生说明：</td>
+					<td>
+						<input type="text" id="doctor-desc" placeholder="如“呼吸道感染”、“胃病”等"/>
+						<span class="desc">支持正则表达式</span>
+					</td>
+				</tr>
+				<tr>
+					<td>自动选择：</td>
+					<td>
+						<input type="checkbox" id="auto-choose-doctor"/>
+						<label for="auto-choose-doctor">有多个医生符合条件时，自动选择第一个</label>
+					</td>
+				</tr>
+
+				<tr>
+					<td>姓名：</td>
+					<td><input type="text" id="name"/></td>
+				</tr>
+				<tr>
+					<td>医保卡号：</td>
+					<td><input type="text" id="social-id"/></td>
+				</tr>
+				<tr>
+					<td>就诊卡号：</td>
+					<td><input type="text" id="hospital-id"/></td>
+				</tr>
+				<tr>
+					<td>获取验证码：</td>
+					<td>
+						<input type="checkbox" id="auto-send-sms"/>
+						<label for="auto-send-sms">自动点击“获取验证码”按钮</label>
+					</td>
+				</tr>
+				<tr>
+					<td>输入验证码：</td>
+					<td>
+						这个……宝宝暂时帮不了您
+					</td>
+				</tr>
+			</table>
 			<p>
 				<button id="save">保存修改</button>
-				<button id="delete">删除本地数据</button>
+				<button id="delete">清空所有数据</button>
 			</p>
 			<p>隐私声明：<br />您的个人信息会被保存到您的本地机器，同时会被 Chrome 同步到您的其他设备。您的个人信息不会用作挂号以外的用途，请您放心。信则用，不信请卸载。</p>
+		</div>
+		<div id="about">
+			溪流软件工作室 出品
 		</div>
 	</div>
 </body>

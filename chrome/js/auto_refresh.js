@@ -10,26 +10,80 @@ $(function () {
 			// 约满
 			stop_refresh();
 		} else if (cell.hasClass('ksorder_kyy')) {
+			var continue_refresh = function () {
+				cell.append($('<button>').attr('class', 'stop_refresh').text('停止刷新'));
+				$('.stop_refresh').click(function () {
+					stop_refresh();
+				});
+				setTimeout(function () {
+					window.location.reload(true);
+				}, 1000);
+			};
 			cell.trigger('click');
-			stop_refresh();
+			(function () {
+				var self = arguments.callee;
+				if ($('.ksorder_djgh_dr1 .ksorder_dr1_dl').length > 0) {
+					chrome.storage.sync.get({
+						'info': {}
+					}, function(items) {
+						var info = items['info'];
+						var matched = [];
+						$('.ksorder_djgh_dr1').each(function (i, e) {
+							var this_matched = true;
+							if (info['doctor-type']) {
+								var doctor_type = $(e).find('.ksorder_dr1_dl dd h4').text();
+								try {
+									if (!new RegExp(info['doctor-type']).test(doctor_type)) {
+										this_matched = false;
+									}
+								} catch (e) {
+									if (doctor_type.indexOf(info['doctor-type']) >= 0) {
+										this_matched = false;
+									}
+								}
+							}
+							if (info['doctor-desc']) {
+								var doctor_desc = $(e).find('.ksorder_dr1_dl dd p').text();
+								try {
+									if (!new RegExp(info['doctor-desc']).test(doctor_desc)) {
+										this_matched = false;
+									}
+								} catch (e) {
+									if (doctor_desc.indexOf(info['doctor-desc']) >= 0) {
+										this_matched = false;
+									}
+								}
+							}
+							if (this_matched) {
+								matched.push(i);
+							}
+						});
+
+						if (matched.length > 0) {
+							stop_refresh();
+							if (matched.length === 1 || info['auto-choose-doctor']) {
+								window.location = $('.ksorder_djgh_dr1:nth-child(' + (matched[0] + 1) + ') .ksorder_dr1_p2 a.ksorder_dr1_syhy').attr('href');
+							}
+						} else {
+							continue_refresh();
+						}
+
+					});
+
+				} else {
+					setTimeout(self, 100);
+				}
+			})();
 		} else {
-			cell.append($('<button>').attr('class', 'stop_refresh').text('停止刷新'));
-			$('.stop_refresh').click(function () {
-				stop_refresh();
-			});
-			setTimeout(function () {
-				window.location.reload(true);
-			}, 1000);
+			continue_refresh();
 		}
 	};
 
 	var show_auto_refresh_buttons = function () {
 		$('#ksorder_time .ksorder_cen_l_t_c td[class!=ksorder_ym]').each(function (i, e) {
-			if (!$(e).hasClass('ksorder_kyy')) {
-				$(e).append(
-					$('<button>').attr('id', $(e).children('input').val()).attr('class', 'auto_refresh').text('自动刷新')
-				);
-			}
+			$(e).append(
+				$('<button>').attr('id', $(e).children('input').val()).attr('class', 'auto_refresh').text('自动刷新')
+			);
 		});
 		$('.auto_refresh').click(function (e) {
 			var login_link = $('.dbnav_context_right a:first-child');

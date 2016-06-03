@@ -1,11 +1,11 @@
 $(function() {
 	var init_info = function (info) {
+		$('#doctor-type').val(info['doctor-type']);
+		$('#doctor-desc').val(info['doctor-desc']);
+		$('#auto-choose-doctor').attr('checked', info['auto-choose-doctor']);
 		$('#name').val(info['name']);
 		$('#social-id').val(info['social-id']);
 		$('#hospital-id').val(info['hospital-id']);
-		if (info['auto-send-sms']) {
-			$('#auto-send-sms').attr('checked', 'checked');
-		}
 	};
 	var init_favorites = function (favorites) {
 		$('#favorites').empty();
@@ -57,9 +57,12 @@ $(function() {
 	$('#save').click(function() {
 		chrome.storage.sync.set({
 			'info' : {
-				'name': $('#name').val(),
-				'social-id': $('#social-id').val(),
-				'hospital-id': $('#hospital-id').val(),
+				'doctor-type': $('#doctor-type').val().trim(),
+				'doctor-desc': $('#doctor-desc').val().trim(),
+				'auto-choose-doctor': $('#auto-choose-doctor').is(':checked'),
+				'name': $('#name').val().trim(),
+				'social-id': $('#social-id').val().trim(),
+				'hospital-id': $('#hospital-id').val().trim(),
 				'auto-send-sms': $('#auto-send-sms').is(':checked'),
 			}
 		}, function() {
@@ -73,6 +76,21 @@ $(function() {
 	});
 	$('#privacy').click(function() {
 		alert($(this).attr('title'));
+	});
+
+	window.onload = function () {
+		chrome.storage.sync.get({
+			'tab': '#favorites',
+		}, function (items) {
+			$('div.tabs ul li a[href=' + items['tab'] +']').trigger('click');
+		})
+	};
+	$('div.tabs ul li a').click(function () {
+		chrome.storage.sync.set({
+			'tab': $(this).attr('href'),
+		}, function () {
+
+		})
 	});
 
 	init_ui();
