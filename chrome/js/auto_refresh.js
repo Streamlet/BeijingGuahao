@@ -6,19 +6,19 @@ $(function () {
 
 	var do_auto_refresh = function (refresh_id) {
 		var cell = $('#ksorder_time .ksorder_cen_l_t_c td:has(input[value="' + refresh_id + '"])');
+		var continue_refresh = function () {
+			cell.append($('<button>').attr('class', 'stop_refresh').text('停止刷新'));
+			$('.stop_refresh').click(function () {
+				stop_refresh();
+			});
+			setTimeout(function () {
+				window.location.reload(true);
+			}, 1000);
+		};
 		if (cell.hasClass('ksorder_ym')) {
 			// 约满
 			stop_refresh();
 		} else if (cell.hasClass('ksorder_kyy')) {
-			var continue_refresh = function () {
-				cell.append($('<button>').attr('class', 'stop_refresh').text('停止刷新'));
-				$('.stop_refresh').click(function () {
-					stop_refresh();
-				});
-				setTimeout(function () {
-					window.location.reload(true);
-				}, 1000);
-			};
 			cell.trigger('click');
 			(function () {
 				var self = arguments.callee;

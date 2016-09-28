@@ -6,6 +6,7 @@ $(function() {
 		$('#name').val(info['name']);
 		$('#social-id').val(info['social-id']);
 		$('#hospital-id').val(info['hospital-id']);
+		$('#auto-send-sms').attr('checked', info['auto-send-sms']);
 	};
 	var init_favorites = function (favorites) {
 		$('#favorites').empty();
